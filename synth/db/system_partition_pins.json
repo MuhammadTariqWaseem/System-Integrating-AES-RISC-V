@@ -1,0 +1,125 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "VR[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "VR[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[1]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[5]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[6]",
+					"strict" : false
+				},
+				{
+					"name" : "VG[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[5]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[6]",
+					"strict" : false
+				},
+				{
+					"name" : "VB[7]",
+					"strict" : false
+				},
+				{
+					"name" : "blank_N",
+					"strict" : false
+				},
+				{
+					"name" : "H_Sync",
+					"strict" : false
+				},
+				{
+					"name" : "V_Sync",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "raw_reset",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,4 @@
+Warning (10268): Verilog HDL information at VGA_port.sv(108): always construct contains both blocking and non-blocking assignments File: C:/Users/PC/Desktop/fyd/burning_riscv_vga/rtl/VGA_port.sv Line: 108
+Info (10281): Verilog HDL Declaration information at VGA_port.sv(13): object "H_Sync" differs only in case from object "H_SYNC" in the same scope File: C:/Users/PC/Desktop/fyd/burning_riscv_vga/rtl/VGA_port.sv Line: 13
+Info (10281): Verilog HDL Declaration information at VGA_port.sv(15): object "V_Sync" differs only in case from object "V_SYNC" in the same scope File: C:/Users/PC/Desktop/fyd/burning_riscv_vga/rtl/VGA_port.sv Line: 15
+Warning (10268): Verilog HDL information at key_expansion.sv(41): always construct contains both blocking and non-blocking assignments File: C:/Users/PC/Desktop/fyd/AES_Hardware_Accellerator/FYP_RTL_DESIGN/ENCRYPTION/key_expansion/verilog/rtl/key_expansion.sv Line: 41
