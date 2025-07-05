@@ -1,0 +1,299 @@
+7ff00e93
+7ff00f13
+7ff00f93
+002e8e93
+102f0f13
+002f8f93
+43e00113
+7ffe8e93
+7fff0f13
+7fff8f93
+00000013
+00000013
+00000013
+042026a3
+7d000613
+7d000693
+7d000713
+6dc00793
+00d60833
+00f708b3
+00000293
+011802b3
+7ff00613
+7ff00693
+00260613
+00d60eb3
+0f7e8d93
+03a00313
+00400393
+00032483
+00400413
+fff38e13
+00000013
+0092a023
+fff38393
+fff40413
+00000013
+00000013
+fe041ae3
+fc039ee3
+001e8e93
+fdbe96e3
+02000b13
+08900b93
+00400413
+fffb8b93
+00000013
+0162a023
+fff40413
+00000013
+00000013
+fe041ae3
+fe0b90e3
+f09e8e93
+7ff60613
+7ff68693
+00260613
+00d60a33
+000e8a93
+03800313
+00400393
+00032483
+000a0e93
+00400413
+fff38e13
+00000013
+0092a023
+fff38393
+fff40413
+00000013
+00000013
+fe041ae3
+fc039ee3
+00932023
+001a8a93
+001a0a13
+000a8e93
+fbbe9ee3
+02000b13
+08900b93
+00400413
+fffb8b93
+00000013
+0162a023
+fff40413
+00000013
+00000013
+fe041ae3
+fe0b90e3
+7ff00e93
+7ff00f13
+7ff00f93
+7ffe8e93
+7fff8f93
+004e8e93
+102f0f13
+004f8f93
+7ffe8e93
+7fff8f93
+83e00113
+7ffe8e93
+7fff0f13
+7fff8f93
+00000013
+00000013
+00000013
+042026a3
+00300413
+fff40413
+00000013
+00000013
+fe041ae3
+7ff00613
+7ff00693
+00260613
+00d60eb3
+01de8eb3
+0f7e8d93
+03800313
+00400393
+00032483
+00500413
+fff38e13
+00000013
+0092a023
+fff38393
+fff40413
+00000013
+00000013
+fe041ae3
+fc039ee3
+001e8e93
+fdbe96e3
+01188063
+
+
+addi    x29, x0 , 0x7ff           
+addi    x30, x0 , 0x7ff         
+addi    x31, x0 , 0x7ff
+addi    x29, x29, 0x2           
+addi    x30, x30, 0x102         
+addi    x31, x31, 0x2
+addi    x2 , x0 , 0x43e   #encrytp 62 words command
+addi    x29, x29, 0x7ff   #data addr
+addi    x30, x30, 0x7ff   #key addr
+addi    x31, x31, 0x7ff   #write addr
+nop
+nop
+nop
+sw      x2 , 77(x0)       #AES Encrypt
+
+addi    x12, x0 , 2000                                   
+addi    x13, x0 , 2000                                    
+addi    x14, x0 , 2000                                    
+addi    x15, x0 , 1756                                    
+add     x16, x12, x13                                     
+add     x17, x14, x15                                     
+addi    x5 , x0 , 0                                      
+add     x5 , x16, x17     #address 7756
+
+addi    x12, x0 , 0x7ff
+addi    x13, x0 , 0x7ff
+addi    x12, x12, 0x2
+add     x29, x12, x13     #address 0x1000 or 4096
+addi    x27, x29 , 247
+
+addi    x6 , x0  , 58     #base address last 2 bits 10 for read data memory
+
+loop0:
+    addi    x7, x0, 4 
+    lw      x9 , 0(x6)
+  loop1:
+    addi    x8, x0, 4       #01400413
+    addi    x28, x7 , -1 
+    nop
+    sw      x9 , 0(x5)      #writing at VGA byte by byte
+    addi    x7, x7, -1 
+    loop2:
+      addi    x8, x8, -1                                       
+      nop                                                        
+      nop                                                        
+      bne     x8 , x0 , loop2     
+    bne     x7 , x0 , loop1
+  addi    x29, x29, 1                                                   
+  bne     x29, x27, loop0   #Read the real text from data memory and write it to VGA
+  
+  addi    x22, x0, 0x20
+  addi    x23, x0 , 137
+  ext0loop0:
+    addi    x8, x0, 4       #01400413
+    addi    x23, x23 , -1 
+    nop
+    sw      x22, 0(x5)      #writing at VGA byte by byte 
+    ext0loop1:
+      addi    x8, x8, -1                                       
+      nop                                                        
+      nop                                                        
+      bne     x8 , x0 , ext0loop1     
+    bne     x23 , x0 , ext0loop0
+  
+  addi    x29, x29, -247
+  addi    x12, x12, 0x7ff
+  addi    x13, x13, 0x7ff
+  addi    x12, x12, 0x2
+  add     x20, x12, x13
+  addi    x21, x29, 0
+  addi    x6 , x0 , 56     #base address last 2 bits 00 for read output memory
+
+loopen0:
+    addi    x7 , x0 , 4 
+    lw      x9 , 0(x6)
+    addi    x29, x20, 0
+  loopen1:
+    addi    x8, x0, 4       
+    addi    x28, x7 , -1
+    nop
+    sw      x9 , 0(x5)
+    addi    x7, x7, -1 
+    loopen2:
+      addi    x8, x8, -1                                       
+      nop                                                        
+      nop                                                        
+      bne     x8 , x0 , loopen2     
+    bne     x7 , x0 , loopen1  
+  sw      x9 , 0(x6)
+  addi    x21, x21, 1                                                   
+  addi    x20, x20, 1
+  addi    x29, x21, 0
+  bne     x29, x27, loopen0 
+    
+  addi    x22, x0, 0x20
+  addi    x23, x0 , 137
+  ext0loop2:
+    addi    x8, x0, 4       #01400413
+    addi    x23, x23 , -1 
+    nop
+    sw      x22, 0(x5)      #writing at VGA byte by byte 
+    ext0loop3:
+      addi    x8, x8, -1                                       
+      nop                                                        
+      nop                                                        
+      bne     x8 , x0 , ext0loop3     
+    bne     x23 , x0 , ext0loop2
+  
+addi    x29, x0 , 0x7ff           
+addi    x30, x0 , 0x7ff         
+addi    x31, x0 , 0x7ff
+addi    x29, x29, 0x7ff   
+addi    x31, x31, 0x7ff
+addi    x29, x29, 0x004
+addi    x30, x30, 0x102
+addi    x31, x31, 0x004
+addi    x29, x29, 0x7ff   
+addi    x31, x31, 0x7ff
+addi    x2 , x0 , -1986   #decrypt 62 words command
+addi    x29, x29, 0x7ff   #data addr
+addi    x30, x30, 0x7ff   #key addr
+addi    x31, x31, 0x7ff   #write addr
+nop
+nop
+nop
+sw      x2 , 77(x0)       #AES decrypt
+
+addi    x8, x0, 3
+delay:
+  addi    x8, x8, -1                                       
+  nop                                                        
+  nop                                                        
+  bne     x8 , x0 , delay 
+  
+addi    x12, x0 , 0x7ff
+addi    x13, x0 , 0x7ff
+addi    x12, x12, 0x2
+add     x29, x12, x13     #address 0x1000 or 4096
+add     x29, x29, x29
+addi    x27, x29 , 247
+
+addi    x6 , x0  , 56     #base address last 2 bits 10 for read data memory
+
+loopde0:
+    addi    x7, x0, 4 
+    lw      x9 , 0(x6)
+  loopde1:
+    addi    x8, x0, 5       #01400413
+    addi    x28, x7 , -1
+    nop
+    sw      x9 , 0(x5)      #writing at VGA byte by byte
+    addi    x7, x7, -1 
+    loopde2:
+      addi    x8, x8, -1                                       
+      nop                                                        
+      nop                                                        
+      bne     x8 , x0 , loopde2     
+    bne     x7 , x0 , loopde1
+  addi    x29, x29, 1                                                   
+  bne     x29, x27, loopde0   #Read the real text from data memory and write it to VGA
+  
+end:
+beq     x17, x17, end    #01188063   
